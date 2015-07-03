@@ -25,6 +25,8 @@ gem 'mini_magick'
 
 # Auth
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'cancancan'
 
 # Misc
