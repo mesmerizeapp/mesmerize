@@ -420,6 +420,7 @@ DEPENDENCIES
   omniauth
   omniauth-twitter
   pg
+  pry
   puma
   rails (= 4.2.0)
   rails_12factor
