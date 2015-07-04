@@ -417,7 +417,6 @@ DEPENDENCIES
   jquery-turbolinks
   letter_opener
   mini_magick
-  omniauth
   omniauth-twitter
   pg
   pry
