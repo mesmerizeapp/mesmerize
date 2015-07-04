@@ -13,7 +13,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         end
       end
     }
-    binding.pry
   end
 
   [:twitter, :facebook].each do |provider|
