@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  get 'idea/new'
-
-  get 'idea/create'
-
-  get 'idea/update'
-
-  get 'idea/destroy'
-
   root 'pages#home'
+
+  scope 'idea' do
+    get     'new',      to: 'idea#new',     as: :new_idea
+    post    'create',   to: 'idea#create',  as: :create_idea
+
+    scope ':title' do
+      patch   'update',   to: 'idea#update',  as: :update_idea
+      delete  'delete',   to: 'idea#delete',  as: :delete_idea
+    end
+  end
 end
