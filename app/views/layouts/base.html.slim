@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title
+      | Mesmerize
+      = " | #{yield(:title)}" if content_for?(:title)
+    meta content="width=device-width, initial-scale=1.0" name="viewport"
+
+    = yield :stylesheets
+    = yield :meta
+    = csrf_meta_tags
+    /= favicon_link_tag 'favicon.ico'
+
+  body
+    = render 'layouts/header'
+
+    - if content_for? :content
+      = yield :content
+    - else
+      = yield
+
+    = render 'layouts/footer'
+
+    = yield :pre_javascripts
+    = yield :javascripts
+    = yield :post_javascripts

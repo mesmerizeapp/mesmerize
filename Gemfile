@@ -6,6 +6,8 @@ gem 'rails', '4.2.0'
 gem 'pg'
 gem 'puma'
 gem 'foreman'
+gem 'turbolinks'
+gem 'jquery-turbolinks'
 
 # View
 gem 'slim-rails'
@@ -14,9 +16,8 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'simple_form'
-
-# Admin
-gem 'activeadmin', github: 'activeadmin'
+gem 'font-awesome-rails'
+gem 'bootstrap-sass'
 
 # Uploads
 gem 'fog'
