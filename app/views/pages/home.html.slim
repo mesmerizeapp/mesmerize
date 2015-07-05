@@ -1,4 +1,4 @@
 - if current_user.present?
   p = current_user.name
   p = link_to 'Image', current_user.image_url
-  = link_to 'Logout', destroy_user_session_path, method: :delet
+  = link_to 'Logout', destroy_user_session_path, method: :delete
