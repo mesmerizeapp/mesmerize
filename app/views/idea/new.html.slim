@@ -1,2 +1,8 @@
-h1 Idea#new
-p Find me in app/views/idea/new.html.slim
+.container
+	.row
+		.col-md-6.col-md-offset-3
+			= simple_form_for Idea.new, url: new_idea_path do |f|
+			  = f.input :title
+			  = f.input :description
+			  = f.button :submit, class: 'btn btn-primary'
+		 	end
