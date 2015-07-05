@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     match '/users' => 'devise/registrations#update', via: [:patch, :put]
   end
 
-  get ':username', to: 'profiles#index'
+  get ':username', to: 'profiles#index', as: :profile_path
+
   # match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
   scope 'idea' do
     get     'new',      to: 'idea#new',     as: :new_idea
