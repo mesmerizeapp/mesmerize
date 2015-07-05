@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'pages#home'
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }, skip: [:sessions, :registrations]
 
+  resources :ideas, param: :title
+
   as :user do
     get '/login' => 'devise/sessions#new', as: :new_user_session
     post '/login' => 'devise/sessions#create', as: :user_session
@@ -13,17 +15,5 @@ Rails.application.routes.draw do
     get '/users/edit' => 'devise/registrations#edit', as: :edit_user_registration
     match '/users' => 'devise/registrations#update', via: [:patch, :put]
   end
-
-  get ':username', to: 'profiles#index', as: :profile_path
-
-  # match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
-  scope 'idea' do
-    get     'new',      to: 'idea#new',     as: :new_idea
-    post    'create',   to: 'idea#create',  as: :create_idea
-
-    scope ':title' do
-      patch   'update',   to: 'idea#update',  as: :update_idea
-      delete  'delete',   to: 'idea#delete',  as: :delete_idea
-    end
-  end
+   get ':username', to: 'profiles#index', as: :profile
 end
