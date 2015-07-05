@@ -1,4 +1,4 @@
-class IdeaController < ApplicationController
+class IdeasController < ApplicationController
   def new
   end
 
@@ -8,6 +8,6 @@ class IdeaController < ApplicationController
   def update
   end
 
-  def delete
+  def destroy
   end
 end
