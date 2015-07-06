@@ -1,21 +1,52 @@
 .btn {
   border: 0;
+  font-size: 16px;
+  font-weight: 200;
 }
 
 .btn-twitter {
-  border: 2px solid #00ACED;
-  color: #00ACED;
+  border: 2px solid $twitter-blue;
+  color: $twitter-blue;
 
   &:hover {
-    background: #00ACED;
-    color: #fff;
+    background: $twitter-blue;
+    color: $white;
 
     .fa-twitter {
-      color: #fff;
+      color: $white;
     }
   }
 
   .fa-twitter {
-    color: #00ACED;
+    color: $twitter-blue;
+  }
+}
+
+.btn-profile {
+  color: $brand;
+  border: 2px solid $brand;
+
+  &:hover {
+    color: $white;
+    background: $brand;
+  }
+}
+
+.btn-full-width {
+  border-radius: 0;
+  width: 100%;
+}
+
+.btn-idea-action {
+  border-bottom: 1px solid #eee;
+  color: $brand;
+  padding: 15px;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &:hover {
+    background: #eee;
   }
 }

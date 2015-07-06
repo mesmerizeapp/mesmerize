@@ -1,0 +1,17 @@
+.box {
+	background: $white;
+	padding: 10px 35px;
+}
+
+.box-rounded-sm {
+	border-radius: 5px;
+}
+
+.box-idea {
+	min-height: 150px;
+}
+
+.box-border-sides {
+	border-right: 1px solid #eee;
+	border-left: 1px solid #eee;
+}
