@@ -1,53 +1,53 @@
 #user-ideas {
-	background: #fff;
-	padding-top: 70px;
+  background: #fff;
+  padding-top: 70px;
 
-	p {
-		display: block;
-	}
+  p {
+    display: block;
+  }
 
-	.fa {
-		color: #EE8383;
-	}
+  .fa {
+    color: #EE8383;
+  }
 
-	.idea-comments {
-		margin-top: 20px;
-	}
+  .idea-comments {
+    margin-top: 20px;
+  }
 }
 
 #profile-header {
-	color: $white;
+  color: $white;
 
-	.nav-justified {
-		li {
-			background: #EE8383;
+  .nav-justified {
+    li {
+      background: #EE8383;
 
-			a {
-				border: 0;
-				margin: 0;
-			}
+      a {
+        border: 0;
+        margin: 0;
+      }
 
-			&.active > a,
-			&:hover > a {
-				background: $white;
-			}
-		}
-	}
+      &.active > a,
+      &:hover > a {
+        background: $white;
+      }
+    }
+  }
 }
 
 .upvote-btn {
-	display: block;
+  display: block;
 
-	&:hover {
-		background: #eee;
-		text-decoration: none;
-	}
+  &:hover {
+    background: #eee;
+    text-decoration: none;
+  }
 }
 
 .upvote-icons {
-	padding: 40px 0;
+  padding: 40px 0;
 }
 
 .upvote-num {
-	font-size: 18px;
+  font-size: 18px;
 }
