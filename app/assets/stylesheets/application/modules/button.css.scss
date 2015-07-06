@@ -38,7 +38,7 @@
 }
 
 .btn-idea-action {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid $grey;
   color: $brand;
   padding: 15px;
 
@@ -47,6 +47,6 @@
   }
 
   &:hover {
-    background: #eee;
+    background: $grey;
   }
 }
