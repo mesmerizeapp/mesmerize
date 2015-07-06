@@ -41,4 +41,8 @@ class User < ActiveRecord::Base
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
+
+  def image
+    self.image_url.gsub('_normal', '')
+  end
 end

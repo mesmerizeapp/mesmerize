@@ -1,0 +1,30 @@
+= render partial: 'header'
+
+section#user-ideas
+	.container
+		- 3.times do
+			.row
+				.col-xs-1.col-no-gutter
+					= link_to '#', class: 'upvote-btn' do
+						.upvote-icons.text-center
+							p.fa.fa-chevron-up.fa-2x
+							span.upvote-num 12
+
+				.col-xs-8.col-no-gutter
+					.box.box-border-sides
+						h3 JamPad
+						p A place where all musicians can come together and find people who are like minded and who want to jam in a particular city.
+						.idea-comments
+							span.fa.fa-comment-o.fa-text
+							span 10 Comments
+				.col-xs-3.col-no-gutter
+					= link_to '#', class: 'btn btn-idea-action btn-full-width' do
+						span.fa.fa-info-circle.fa-text
+						span Description
+					= link_to '#', class: 'btn btn-idea-action btn-full-width' do
+						span.fa.fa-gavel.fa-text
+						span Builds
+					= link_to '#', class: 'btn btn-idea-action btn-full-width' do
+						span.fa.fa-plus-square.fa-text
+						span Resources
+			hr
