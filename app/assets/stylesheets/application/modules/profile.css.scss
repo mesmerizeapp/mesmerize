@@ -38,9 +38,13 @@
 .upvote-btn {
   display: block;
 
-  &:hover {
-    background: #eee;
+  &:hover,
+  &:focus {
     text-decoration: none;
+  }
+
+  &:hover {
+    background: $grey;
   }
 }
 
@@ -49,5 +53,6 @@
 }
 
 .upvote-num {
+  color: $black;
   font-size: 18px;
 }
