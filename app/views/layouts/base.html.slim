@@ -17,7 +17,6 @@ html
     - if content_for? :content
       = yield :content
     - else
-      = render 'layouts/profile_header'
       = yield
 
     = render 'layouts/footer'

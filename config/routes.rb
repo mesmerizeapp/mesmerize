@@ -15,6 +15,5 @@ Rails.application.routes.draw do
     get '/users/edit' => 'devise/registrations#edit', as: :edit_user_registration
     match '/users' => 'devise/registrations#update', via: [:patch, :put]
   end
-
-  # match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
+   get ':username', to: 'profiles#index', as: :profile
 end
