@@ -1,8 +1,12 @@
 class IdeasController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @ideas = current_user.ideas
+  end
+
   def new
-    @idea = Idea.new
+    @idea = current_user.ideas.new
   end
 
   def create
