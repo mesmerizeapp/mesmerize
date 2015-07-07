@@ -2,7 +2,7 @@
 
 section#user-ideas
   .container
-    - 3.times do
+    - @ideas.each do |idea|
       .row
         .col-xs-1.col-no-gutter
           = link_to '#', class: 'upvote-btn' do
@@ -12,8 +12,8 @@ section#user-ideas
 
         .col-xs-8.col-no-gutter
           .box.box-border-sides
-            h3 JamPad
-            p A place where all musicians can come together and find people who are like minded and who want to jam in a particular city.
+            h3 = idea.title
+            p = idea.brief
             .idea-comments
               span.fa.fa-comment-o.fa-text
               span 10 Comments
@@ -27,4 +27,5 @@ section#user-ideas
           = link_to '#', class: 'btn btn-idea-action btn-full-width' do
             span.fa.fa-plus-square.fa-text
             span Resources
-      hr
+      - if @ideas.last.id != idea.id
+        hr
