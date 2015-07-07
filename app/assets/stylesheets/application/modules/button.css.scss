@@ -1,7 +1,19 @@
 .btn {
   border: 0;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 200;
+}
+
+.btn-brand {
+  background: $white;
+  border: 2px solid $brand;
+  color: $brand;
+  font-weight: 500;
+
+  &:hover {
+    background: $brand;
+    color: $white;
+  }
 }
 
 .btn-twitter {
@@ -23,12 +35,13 @@
 }
 
 .btn-profile {
-  color: $brand;
-  border: 2px solid $brand;
+  border: 2px solid $white;
+  color: $white;
+  font-weight: 500;
 
   &:hover {
-    color: $white;
-    background: $brand;
+    background: $white;
+    color: $brand;
   }
 }
 
