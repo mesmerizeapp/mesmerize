@@ -16,6 +16,6 @@ Rails.application.routes.draw do
 
   scope ':username' do
     get '', to: 'profiles#index', as: :profile
-    resources :ideas, param: :title
+    resources :ideas
   end
 end

@@ -35,12 +35,13 @@
 }
 
 .btn-profile {
-  color: $brand;
-  border: 2px solid $brand;
+  border: 2px solid $white;
+  color: $white;
+  font-weight: 500;
 
   &:hover {
-    color: $white;
-    background: $brand;
+    background: $white;
+    color: $brand;
   }
 }
 
