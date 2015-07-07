@@ -1,0 +1,19 @@
+.spacer-md-10
+section#profile-header.pane.pane-dark.pane-no-bottom
+  .container
+    .row
+      .col-xs-2
+        = image_tag @user.image, class: 'img-circle img-responsive'
+      .col-xs-6
+        h2 = @user.name
+        p
+          | @
+          = @user.username
+    .spacer-md-30
+    .row
+      .col-xs-12
+        ul.nav.nav-tabs.nav-justified
+          li.active role="presentation"
+            = link_to 'Ideas', '#', class: 'h4'
+          li role="presentation"
+            = link_to 'Upvoted Ideas', '#', class: 'h4'

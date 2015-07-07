@@ -7,6 +7,7 @@ section#header
       .col-xs-10
         .pull-right
           .spacer-md-15
-          .btn.btn-twitter
-            span.fa.fa-twitter.fa-text
-            span Login via Twitter
+          - if !current_user.present?
+            = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-twitter' do
+              span.fa.fa-twitter.fa-text
+              span Login via Twitter
