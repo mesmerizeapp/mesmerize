@@ -19,7 +19,21 @@ class IdeasController < ApplicationController
     end
   end
 
+  def edit
+    @idea = Idea.find(params[:id])
+  end
+
   def update
+    hash = {
+      title: params[:idea][:title],
+      brief: params[:idea][:brief]
+    }
+
+    if Idea.find(params[:id]).update_attributes(hash)
+      redirect_to profile_path(params[:username])
+    else
+      redirect_to edit_idea_path(params[:id]), alert: 'Something went wrong. Please try again.'
+    end
   end
 
   def destroy
