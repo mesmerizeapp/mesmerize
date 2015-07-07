@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_one :identity, dependent: :destroy
+  has_many :ideas, dependent: :destroy
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
@@ -39,5 +40,9 @@ class User < ActiveRecord::Base
 
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
+  end
+
+  def image
+    self.image_url.gsub('_normal', '')
   end
 end
