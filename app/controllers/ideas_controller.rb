@@ -1,4 +1,6 @@
 class IdeasController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @idea = Idea.new
   end

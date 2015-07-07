@@ -1,8 +1,13 @@
 .container
   .row
     .col-md-6.col-md-offset-3
-      = simple_form_for @idea, url: ideas_path do |f|
-        = f.input :title
-        = f.input :description
-        = f.button :submit, class: 'btn btn-primary'
-      end
+		  = form_for @idea, url: { action: 'create' }, html: { multipart: true } do |f|
+		    .form-group.field
+		      = f.label :title
+		      = f.text_field :title, autofocus: true, class: 'form-control'
+		    .form-group.field
+		      = f.label :description
+		      = f.text_field :description, class: 'form-control'
+		    .spacer-md-20
+		    .actions
+		      = f.submit 'Add Variants', class: 'btn btn-primary'
