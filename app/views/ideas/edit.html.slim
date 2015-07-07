@@ -5,12 +5,12 @@
       .spacer-md-50
       .box
         h4
-          span.fa.fa-asterisk.fa.fa-text
-          | Log your stroke of genius moments!
+          span.fa.fa-pencil-square-o.fa.fa-text.fa-lg
+          | Refine until you're satisfied.
 
         .spacer-md-40
 
-        = form_for @idea, url: { action: 'create' }, html: { multipart: true } do |f|
+        = form_for @idea, url: { action: 'update' }, method: :patch do |f|
           .form-group
             = f.label :title, 'What do you want to call this idea?'
             = f.text_field :title, autofocus: true, class: 'form-control'
@@ -21,5 +21,5 @@
           .clearfix
             .btn-group.pull-right
               = button_tag type: 'submit', class: 'btn btn-brand' do
-                span.fa-text Next
+                span.fa-text Edit
                 .fa.fa-chevron-right.fa-sm
