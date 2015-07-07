@@ -1,0 +1,36 @@
+body {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 16px;
+}
+
+.container {
+  width: 960px;
+}
+
+.pane {
+  padding: 10px 0;
+}
+
+.pane-no-bottom {
+  padding-bottom: 0 !important;
+}
+
+.pane-dark {
+  background: #C64E4E;
+}
+
+.fa-text {
+  margin-right: 10px;
+}
+
+.col-no-gutter {
+  padding: 0;
+}
+
+.col-right-no-gutter {
+  padding-right: 0;
+}
+
+.col-left-no-gutter {
+  padding-left: 0;
+}
