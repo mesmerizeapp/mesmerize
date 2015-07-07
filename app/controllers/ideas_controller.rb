@@ -13,7 +13,7 @@ class IdeasController < ApplicationController
     idea = current_user.ideas.build(idea_params)
 
     if idea.save
-      redirect_to root_path
+      redirect_to profile_path(params[:username])
     else
       redirect_to new_idea_path, alert: 'Something went wrong. Please try again.'
     end
