@@ -1,13 +1,25 @@
 .container
   .row
     .col-md-6.col-md-offset-3
-		  = form_for @idea, url: { action: 'create' }, html: { multipart: true } do |f|
-		    .form-group.field
-		      = f.label :title
-		      = f.text_field :title, autofocus: true, class: 'form-control'
-		    .form-group.field
-		      = f.label :description
-		      = f.text_field :description, class: 'form-control'
-		    .spacer-md-20
-		    .actions
-		      = f.submit 'Add Variants', class: 'btn btn-primary'
+      .spacer-md-50
+      .spacer-md-50
+      .box
+        h4
+          span.fa.fa-asterisk.fa.fa-text
+          | Log your stroke of genius moments!
+
+        .spacer-md-40
+
+        = form_for @idea, url: { action: 'create' }, html: { multipart: true } do |f|
+          .form-group
+            = f.label :title, 'What do you want to call this idea?'
+            = f.text_field :title, autofocus: true, class: 'form-control'
+          .form-group
+            = f.label :description, 'Describe your idea in a nice and crisp statement'
+            = f.text_area :description, class: 'form-control'
+          .spacer-md-20
+          .clearfix
+            .btn-group.pull-right
+              = button_tag type: 'submit', class: 'btn btn-brand' do
+                span.fa-text Next
+                .fa.fa-chevron-right.fa-sm
