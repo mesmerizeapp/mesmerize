@@ -18,11 +18,11 @@
 }
 
 .btn-twitter {
-  border: 2px solid $twitter-blue;
-  color: $twitter-blue;
+  border: 2px solid $brand;
+  color: $brand;
 
   &:hover {
-    background: $twitter-blue;
+    background: $brand;
     color: $white;
 
     .fa-twitter {
@@ -31,7 +31,7 @@
   }
 
   .fa-twitter {
-    color: $twitter-blue;
+    color: $brand;
   }
 }
 
