@@ -1,10 +1,25 @@
 .spacer-md-10
-section#masthead.pane.pane-dark
+section#masthead-home.pane.pane-dark.square-texture
   .spacer-md-50
-  h2 Don't let that idea of your die off!
+  .text-center
+    h1 Don't let your ideas slip away again!
+    p.h3.sub-text Mesmerize helps you log them, polish them & get it validated.
   .spacer-md-50
 
-- if current_user.present?
-  p = current_user.name
-  p = link_to 'Image', current_user.image_url
-  = link_to 'Logout', destroy_user_session_path, method: :delete
+section#pitch.pane
+  .container
+    .row
+      .col-xs-12
+        .mesmerize-flow
+          = image_tag 'flow.png', class: 'image-contained'
+          / h2 Try Mesmerize!
+          / .spacer-md-30
+          / p Wouldn't it be awesome if your ideas were saved somewhere. You could build on it yourself, ask others to help or make it public to get it validated to see if there are takers out there.
+
+          / p Mesmerize is that platform that helps you do that!
+
+          / .spacer-md-15
+          /   = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-twitter' do
+          /     span.fa.fa-twitter.fa-text
+          /     span Login via Twitter
+          / .spacer-md-15

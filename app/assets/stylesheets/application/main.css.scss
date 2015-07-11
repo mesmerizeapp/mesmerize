@@ -1,5 +1,6 @@
 body {
-  background-color: $grey;
+  background-color: $white;
+  background-image: image-url("bg.png");
   font-family: 'Oxygen', sans-serif;
   font-size: 16px;
 }
@@ -17,7 +18,11 @@ body {
 }
 
 .pane-dark {
-  background: #C64E4E;
+  background: $brand;
+}
+
+.pane-white {
+  background: $white;
 }
 
 .fa-text {
