@@ -17,24 +17,6 @@
   }
 }
 
-.btn-twitter {
-  border: 2px solid $brand;
-  color: $brand;
-
-  &:hover {
-    background: $brand;
-    color: $white;
-
-    .fa-twitter {
-      color: $white;
-    }
-  }
-
-  .fa-twitter {
-    color: $brand;
-  }
-}
-
 .btn-profile {
   border: 2px solid $white;
   color: $white;
