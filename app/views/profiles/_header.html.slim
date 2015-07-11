@@ -16,6 +16,10 @@ section#profile-header.pane.pane-dark.pane-no-bottom
             = link_to new_idea_path, class: 'btn btn-profile' do
               span.fa.fa-plus.fa-text
               span Add Idea
+            .spacer-md-20
+            = link_to destroy_user_session_path, method: :delete, class: 'btn btn-profile' do
+              span.fa.fa-power-off.fa-text
+              span Logout
 
     .spacer-md-30
     .row
