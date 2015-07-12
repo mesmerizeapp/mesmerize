@@ -414,7 +414,6 @@ DEPENDENCIES
   capybara
   carrierwave
   ckeditor
-  coffee-rails
   devise
   exception_notification
   factory_girl_rails
