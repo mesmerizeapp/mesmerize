@@ -1,6 +1,7 @@
 class IdeasController < ApplicationController
   layout 'application', only: [:new]
-  before_action :get_idea_object, except: [:index, :new, :create]
+  before_action :set_idea, except: [:index, :new, :create]
+  before_action :authenticate_user!, except: [:index, :show, :description]
 
   def index
     redirect_to profile_path(params[:username])
@@ -61,7 +62,7 @@ class IdeasController < ApplicationController
     params.require(:idea).permit(:title, :brief, :description)
   end
 
-  def get_idea_object
+  def set_idea
     @idea = Idea.find(params[:id])
   end
 end
