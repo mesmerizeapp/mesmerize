@@ -1,0 +1,19 @@
+h4
+  span.fa.fa-pencil-square-o.fa.fa-text.fa-lg.fa-brand
+  | Edit Description
+
+p.text-muted.fa-xxs Explain the problem statement, the solution, the market it benefits,the existing solutions, how its different from existing solutions.
+
+p.text-muted.fa-xxs Note: Use the builds to build upon the existing concept.
+.spacer-md-20
+
+= form_for @idea, url: { action: 'update_description' }, method: :patch do |f|
+  .form-group
+    = f.label :description, 'What do you want to call this idea?'
+    = f.text_area :description, autofocus: true, class: 'form-control'
+  .spacer-md-20
+  .clearfix
+    .btn-group.pull-right
+      = button_tag type: 'submit', class: 'btn btn-brand' do
+        span.fa-text Edit
+        .fa.fa-chevron-right.fa-xs

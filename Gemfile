@@ -18,11 +18,13 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'bootstrap-sass'
+gem 'ckeditor'
 
 # Uploads
 gem 'fog'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'paperclip'
 
 # Auth
 gem 'devise'

@@ -5,6 +5,11 @@
   font-weight: 200;
 }
 
+.btn-full-width {
+  border-radius: 0;
+  width: 100%;
+}
+
 .btn-brand {
   background: $white;
   border: 2px solid $brand;
@@ -14,24 +19,6 @@
   &:hover {
     background: $brand;
     color: $white;
-  }
-}
-
-.btn-twitter {
-  border: 2px solid $twitter-blue;
-  color: $twitter-blue;
-
-  &:hover {
-    background: $twitter-blue;
-    color: $white;
-
-    .fa-twitter {
-      color: $white;
-    }
-  }
-
-  .fa-twitter {
-    color: $twitter-blue;
   }
 }
 
@@ -46,11 +33,6 @@
   }
 }
 
-.btn-full-width {
-  border-radius: 0;
-  width: 100%;
-}
-
 .btn-idea-action {
   border-bottom: 1px solid $grey;
   color: $brand;
@@ -61,6 +43,7 @@
   }
 
   &:hover {
-    background: $grey;
+    background: $brand;
+    color: $white;
   }
 }

@@ -1,0 +1,12 @@
+= link_to idea_path(id: @idea.id), class: "btn btn-idea-action btn-full-width #{activate('show')}" do
+  span.fa.fa-asterisk.fa-text
+  span Idea
+= link_to description_path(id: @idea.id), class: "btn btn-idea-action btn-full-width #{activate('description')}" do
+  span.fa.fa-info-circle.fa-text
+  span Description
+= link_to '#', class: "btn btn-idea-action btn-full-width #{activate('builds')}" do
+  span.fa.fa-gavel.fa-text
+  span Builds
+= link_to '#', class: "btn btn-idea-action btn-full-width #{activate('resources')}" do
+  span.fa.fa-plus-square.fa-text
+  span Resources

@@ -1,6 +1,6 @@
 = render partial: 'header'
 
-section#user-ideas
+section.pane-lg.profile-ideas
   .container
     - if @ideas.present?
       - @ideas.each do |idea|
@@ -17,13 +17,13 @@ section#user-ideas
                 span.fa-text = idea.title
                 - if profile_belongs_to_current_user?
                   = link_to edit_idea_path(id: idea.id)
-                    span.fa.fa-pencil-square-o.fa-md  edit
+                    span.fa.fa-pencil-square-o.fa-sm  edit
               p = idea.brief
               .idea-comments
                 span.fa.fa-comment-o.fa-text
                 span 10 Comments
           .col-xs-3.col-no-gutter
-            = link_to '#', class: 'btn btn-idea-action btn-full-width' do
+            = link_to description_path(id: idea.id), class: 'btn btn-idea-action btn-full-width' do
               span.fa.fa-info-circle.fa-text
               span Description
             = link_to '#', class: 'btn btn-idea-action btn-full-width' do

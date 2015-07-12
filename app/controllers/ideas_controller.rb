@@ -1,8 +1,12 @@
 class IdeasController < ApplicationController
-  before_action :authenticate_user!
+  layout 'application', only: [:new]
 
   def index
-    @ideas = current_user.ideas
+    redirect_to profile_path(params[:username])
+  end
+
+  def show
+    @idea = Idea.find(params[:id])
   end
 
   def new
@@ -37,6 +41,17 @@ class IdeasController < ApplicationController
   end
 
   def destroy
+  end
+
+  def description
+    @idea = Idea.find(params[:id])
+  end
+
+  def edit_description
+    @idea = Idea.find(params[:id])
+  end
+
+  def update_description
   end
 
   private
