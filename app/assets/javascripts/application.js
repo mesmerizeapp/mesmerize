@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require turbolinks
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree ./common
 //= require_tree ./application
 //= require_tree .
-//= require turbolinks
