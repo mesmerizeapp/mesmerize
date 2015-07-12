@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   root 'pages#home'
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }, skip: [:sessions, :registrations]
 
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
     scope 'ideas/:id' do
       get   'description',      to: 'ideas#description',        as: 'idea_description'
       get   'description/edit', to: 'ideas#edit_description',   as: 'edit_description'
-      post  'description',      to: 'ideas#update_description'
+      patch  'description',      to: 'ideas#update_description'
     end
   end
 end
