@@ -2,9 +2,9 @@ h4
   span.fa.fa-pencil-square-o.fa.fa-text.fa-lg.fa-brand
   | Edit Description
 
-p.text-muted.fa-xxs Explain the problem statement, the solution, the market it benefits,the existing solutions, how its different from existing solutions.
+p.text-muted.fa-xxs Explain the problem statement, the solution, the market it benefits,the existing solutions, how its different from existing solutions, etc.
 
-p.text-muted.fa-xxs Note: Use the builds to build upon the existing concept.
+p.text-muted.fa-xxs Note: Use builds to build upon the existing concept, i.e. features and integrations.
 .spacer-md-20
 
 = form_for @idea, url: { action: 'update_description' }, method: :patch do |f|
@@ -18,5 +18,4 @@ p.text-muted.fa-xxs Note: Use the builds to build upon the existing concept.
         .fa.fa-chevron-right.fa-xs
 
 javascript:
-
   CKEDITOR.replace('ck-editor')
