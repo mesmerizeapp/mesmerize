@@ -1,0 +1,19 @@
+- content_for :stylesheets do
+  = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Oxygen:400,300,700', media: 'all', 'data-turbolinks-track' => true
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+
+- content_for :javascripts do
+  = javascript_include_tag 'application'
+
+- content_for :content do
+  .container
+    .row.idea-single
+      .spacer-md-50
+      .spacer-md-50
+      .col-xs-3.col-no-gutter
+        = render partial: 'ideas/sidebar'
+      .col-xs-9.col-no-gutter
+        .box.drop-box-shadow
+          = yield
+
+= render template: 'layouts/base'
