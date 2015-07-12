@@ -1,9 +1,8 @@
-h3
-  span.fa-text Description
-  - if profile_belongs_to_current_user?
-    = link_to edit_description_path(id: @idea.id)
-      span.fa.fa-pencil-square-o.fa-sm  edit
-p = @idea.brief
+- if profile_belongs_to_current_user?
+  = link_to edit_description_path(id: @idea.id) do
+    span.fa.fa-pencil-square-o.fa-sm edit
+  hr
+= raw @idea.description
 .spacer-md-15
 .idea-comments
   = link_to '#comments' do
