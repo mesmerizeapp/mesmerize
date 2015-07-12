@@ -28,15 +28,10 @@ class IdeasController < ApplicationController
   end
 
   def update
-    hash = {
-      title: params[:idea][:title],
-      brief: params[:idea][:brief]
-    }
-
-    if @idea.update_attributes(hash)
+    if @idea.update_attributes(idea_params)
       redirect_to profile_path(params[:username])
     else
-      redirect_to edit_idea_path(params[:id]), alert: 'Something went wrong. Please try again.'
+      redirect_to edit_idea_path(username: params[:username], id: @idea.id), alert: 'Something went wrong. Please try again.'
     end
   end
 
@@ -51,9 +46,9 @@ class IdeasController < ApplicationController
   end
 
   def update_description
-    @idea.update_attribute(:description, params[:idea][:description])
+    @idea.update_attribute(:description, idea_params[:description])
 
-    redirect_to description_path(id: @idea.id)
+    redirect_to description_path(@idea.id)
   end
 
   private
