@@ -15,7 +15,13 @@ Rails.application.routes.draw do
   end
 
   scope ':username' do
-    get '', to: 'profiles#index', as: :profile
     resources :ideas
+
+    get '', to: 'profiles#index', as: :profile
+    scope 'ideas/:id' do
+      get   'description',      to: 'ideas#description',        as: 'idea_description'
+      get   'description/edit', to: 'ideas#edit_description',   as: 'edit_description'
+      post  'description',      to: 'ideas#update_description'
+    end
   end
 end

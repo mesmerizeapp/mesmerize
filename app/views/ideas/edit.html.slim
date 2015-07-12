@@ -1,25 +1,19 @@
-.container
-  .row
-    .col-md-6.col-md-offset-3
-      .spacer-md-50
-      .spacer-md-50
-      .box.drop-box-shadow
-        h4
-          span.fa.fa-pencil-square-o.fa.fa-text.fa-lg
-          | Refine until you're satisfied.
+h4
+  span.fa.fa-pencil-square-o.fa.fa-text.fa-lg.fa-brand
+  | Refine until you're satisfied.
 
-        .spacer-md-40
+.spacer-md-40
 
-        = form_for @idea, url: { action: 'update' }, method: :patch do |f|
-          .form-group
-            = f.label :title, 'What do you want to call this idea?'
-            = f.text_field :title, autofocus: true, class: 'form-control'
-          .form-group
-            = f.label :brief, 'Describe your idea in a nice and crisp statement'
-            = f.text_area :brief, class: 'form-control'
-          .spacer-md-20
-          .clearfix
-            .btn-group.pull-right
-              = button_tag type: 'submit', class: 'btn btn-brand' do
-                span.fa-text Edit
-                .fa.fa-chevron-right.fa-sm
+= form_for @idea, url: { action: 'update' }, method: :patch do |f|
+  .form-group
+    = f.label :title, 'What do you want to call this idea?'
+    = f.text_field :title, autofocus: true, class: 'form-control'
+  .form-group
+    = f.label :brief, 'Describe your idea in a nice and crisp statement'
+    = f.text_area :brief, class: 'form-control'
+  .spacer-md-20
+  .clearfix
+    .btn-group.pull-right
+      = button_tag type: 'submit', class: 'btn btn-brand' do
+        span.fa-text Edit
+        .fa.fa-chevron-right.fa-xs

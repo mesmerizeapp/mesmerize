@@ -18,6 +18,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'bootstrap-sass'
+gem 'ckeditor'
 
 # Uploads
 gem 'fog'
