@@ -3,7 +3,9 @@ h3
   - if profile_belongs_to_current_user?
     = link_to edit_description_path(id: @idea.id)
       span.fa.fa-pencil-square-o.fa-sm  edit
-p = @idea.brief
+  br
+hr
+= raw @idea.description
 .spacer-md-15
 .idea-comments
   = link_to '#comments' do
