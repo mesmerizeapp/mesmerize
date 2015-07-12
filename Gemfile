@@ -24,6 +24,7 @@ gem 'ckeditor'
 gem 'fog'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'paperclip'
 
 # Auth
 gem 'devise'
