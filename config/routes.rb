@@ -23,6 +23,8 @@ Rails.application.routes.draw do
       get   'description',      to: 'ideas#description',        as: 'idea_description'
       get   'description/edit', to: 'ideas#edit_description',   as: 'edit_description'
       patch  'description',      to: 'ideas#update_description'
+
+      resources :votes, only: [:create, :index]
     end
   end
 end
