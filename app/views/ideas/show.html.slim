@@ -8,4 +8,10 @@ p = @idea.brief
 .idea-comments
   = link_to '#comments' do
     span.fa.fa-comment-o.fa-text
-    span 10 Comments
+    span = @comments.count
+    |  Comments
+  hr
+  .comment-form
+    = form_for Comment.new, url: { controller: 'comments', action: 'create' }, method: :post do |f|
+      .form-group
+        = f.text_area :content, class: 'form-control'
