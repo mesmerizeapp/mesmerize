@@ -1,6 +1,5 @@
 h3
-  = @idea.title
-  |  in detail 
+  | Description 
   - if profile_belongs_to_current_user?
     = link_to edit_description_path(id: @idea.id) do
       span.fa.fa-pencil-square-o.fa-sm edit
