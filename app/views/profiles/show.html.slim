@@ -4,7 +4,7 @@ section.pane-lg.profile-ideas
   .container
     .tab-content
       #ideas.tab-pane.active
-        = render partial: 'ideas', locals: { ideas: @ideas }
+        = render partial: 'ideas', locals: { ideas: @ideas, message: 'Ideas from this user is currently in the brewing process.' }
 
       #voted-ideas.tab-pane
-        = render partial: 'ideas', locals: { ideas: @user.voted_ideas}
+        = render partial: 'ideas', locals: { ideas: @user.voted_ideas, message: 'Nothing to see here...'}
