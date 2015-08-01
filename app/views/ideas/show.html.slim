@@ -1,8 +1,7 @@
-h3
-  span.fa-text = @idea.title
-  - if profile_belongs_to_current_user?
-    = link_to edit_idea_path(id: @idea.id)
-      span.fa.fa-pencil-square-o.fa-sm  edit
+- content_for :banner_title, @idea.title
+- content_for :edit do
+  = link_to edit_idea_path(id: @idea.id) do
+    span.fa.fa-pencil-square-o.fa-sm.fa-white edit
 p = @idea.brief
 .spacer-md-15
 .comment-list
