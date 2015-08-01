@@ -3,22 +3,29 @@
   = link_to edit_idea_description_path(idea_id: @idea.id) do
     span.fa.fa-pencil-square-o.fa-sm.fa-white edit
 
-= raw @description.content
-.spacer-md-15
-.comment-list
-  = link_to '#comments' do
-    span.fa.fa-comment-o.fa-text
-    span = @comments.count
-    |  Comments
-  hr
-  - @comments.each do |comment|
-    .comment-box
-      = image_tag comment.user.image_url, class: 'img-circle img-comments'
-      h5 = link_to comment.user.username, profile_path(username: comment.user.username)
-      p.h6 = comment.content
-      hr
-  .comment-form
-    = form_for @description.comments.new, url: idea_description_comments_path(idea_id: @idea), method: :post do |f|
-      .form-group
-        = f.label :content, 'Add a comment'
-        = f.text_field :content, class: 'form-control'
+- if @description.content.present?
+  = raw @description.content
+  .spacer-md-15
+  .comment-list
+    = link_to '#comments' do
+      span.fa.fa-comment-o.fa-text
+      span = @comments.count
+      |  Comments
+    hr
+    - @comments.each do |comment|
+      .comment-box
+        = image_tag comment.user.image_url, class: 'img-circle img-comments'
+        h5 = link_to comment.user.username, profile_path(username: comment.user.username)
+        p.h6 = comment.content
+        hr
+    .comment-form
+      = form_for @description.comments.new, url: idea_description_comments_path(idea_id: @idea), method: :post do |f|
+        .form-group
+          = f.label :content, 'Add a comment'
+          = f.text_field :content, class: 'form-control'
+- else
+  .spacer-md-20
+  .text-center
+    h3 Uh oh, doesn't look like a description is added for this yet.
+    h3 Keep an eye out for this one!
+  .spacer-md-50

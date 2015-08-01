@@ -7,9 +7,16 @@
 
 .spacer-md-15
 ol.resource-list
-  - 10.times do |num|
-    li.resource-box
-      p #{link_to 'How to make an ass of yourself', '#'} by #{link_to current_user.username, profile_path(username: current_user.username)}
-      p This is just a long ass description that is used to fill up some space and just stare into the darkness.
-    hr
+  - if @resources.present?
+    - @resources.each do |resource|
+      li.resource-box
+        p #{link_to resource.title, resource.slug} by #{link_to current_user.username, profile_path(username: current_user.username)}
+        p = resource.description
+        hr
+  - else
+    .spacer-md-20
+    .text-center
+      h3 Uh oh, no resources have been added to this idea.
+      h3 Add one & help the poor chap out!
+    .spacer-md-50
 

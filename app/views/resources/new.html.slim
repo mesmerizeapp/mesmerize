@@ -1,0 +1,28 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      .spacer-md-50
+      .spacer-md-50
+      .box.drop-box-shadow
+        h4
+          span.fa.fa-plus-square.fa-brand.fa-text
+          | Add a Resource
+
+        .spacer-md-40
+
+        = form_for @idea.resources.new, url: idea_resources_path, method: :post do |f|
+          .form-group
+            = f.label :title, 'Give your resource a name'
+            = f.text_field :title, autofocus: true, class: 'form-control', required: true
+          .form-group
+            = f.label :description, 'Add a description about the resource'
+            = f.text_field :description, class: 'form-control'
+          .form-group
+            = f.label :slug, 'Add the resource URL'
+            = f.text_field :slug, type: 'url', class: 'form-control', required: true
+          .spacer-md-20
+          .clearfix
+            .btn-group.pull-right
+              = button_tag type: 'submit', class: 'btn btn-brand' do
+                .fa.fa-plus.fa-xs.fa-text
+                span Add
