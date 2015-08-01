@@ -5,17 +5,18 @@ h3
       span.fa.fa-pencil-square-o.fa-sm  edit
 p = @idea.brief
 .spacer-md-15
-.idea-comments
+.comment-list
   = link_to '#comments' do
     span.fa.fa-comment-o.fa-text
     span = @comments.count
     |  Comments
   hr
   - @comments.each do |comment|
-    = image_tag comment.user.image_url, class: 'img-circle img-comments'
-    h5 = link_to comment.user.username, profile_path(username: comment.user.username)
-    p.h6 = comment.content
-    hr
+    .comment-box
+      = image_tag comment.user.image_url, class: 'img-circle img-comments'
+      h5 = link_to comment.user.username, profile_path(username: comment.user.username)
+      p.h6 = comment.content
+      hr
   .comment-form
     = form_for @idea.comments.new, url: idea_comments_path(idea_id: @idea), method: :post do |f|
       .form-group
