@@ -8,6 +8,7 @@ class IdeasController < ApplicationController
   end
 
   def show
+    @comments = @idea.comments
   end
 
   def new
