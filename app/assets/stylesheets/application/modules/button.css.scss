@@ -52,3 +52,16 @@
   border: 0;
   background-color: transparent;
 }
+
+.btn-vote {
+  display: block;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:hover {
+    background: $brand;
+  }
+}

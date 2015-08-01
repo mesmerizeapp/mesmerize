@@ -3,10 +3,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = Idea.find(params[:id]).comments.new(comment_params)
-    comment.user_id = current_user.id
-    comment.save
-    redirect_to idea_path(id: params[:id])
+    Idea.find(params[:idea_id]).comments.create(comment_params.merge!(user: current_user))
+
+    redirect_to idea_path(id: params[:idea_id])
   end
 
   def destroy
