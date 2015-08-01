@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def finish_signup
+    redirect_to profile_path(username: current_user.username) if current_user.email_verified?
     # authorize! :update, @user
     if request.patch? && params[:user] #&& params[:user][:email]
       if current_user.update_without_password(user_params)
