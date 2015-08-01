@@ -8,7 +8,7 @@ class IdeasController < ApplicationController
   end
 
   def show
-    @comments = @idea.comments
+    @comments = @idea.comments.order('id ASC')
   end
 
   def new
