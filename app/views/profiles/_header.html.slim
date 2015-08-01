@@ -6,9 +6,7 @@ section#profile-header.pane.pane-dark.pane-no-bottom
         = image_tag @user.image, class: 'img-circle img-responsive'
       .col-xs-6
         h2 = @user.name
-        p
-          | @
-          = @user.username
+        p @#{@user.username}
       .col-xs-4
 
     .spacer-md-10

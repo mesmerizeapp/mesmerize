@@ -6,10 +6,10 @@ section.pane-lg.profile-ideas
       - @ideas.each do |idea|
         .row
           .col-xs-1.col-no-gutter
-            = link_to '#', class: 'upvote-btn' do
-              .upvote-icons.text-center
+            = link_to '#', class: "btn-vote #{activate_vote(idea)}", data: { username: idea.user.username, idea_id: idea.id, action: set_action(idea) } do
+              .vote-icons.text-center
                 p.fa.fa-chevron-up.fa-2x
-                span.upvote-num 12
+                span.vote-num = idea.votes.count
 
           .col-xs-8.col-no-gutter
             .box.box-border-sides
