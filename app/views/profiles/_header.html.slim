@@ -13,7 +13,5 @@ section#profile-header.pane.pane-dark.pane-no-bottom
     .row
       .col-xs-12
         ul.nav.nav-tabs.nav-justified role="tablist"
-          li.active
-            = link_to 'Ideas', '#ideas', data: { toggle: 'tab', role: 'tab' }, class: 'h4'
-          li
-            = link_to 'Upvoted Ideas', '#voted-ideas', data: { toggle: 'tab', role: 'tab' }, class: 'h4'
+          li.active = link_to 'Ideas', '#ideas', data: { toggle: 'tab', role: 'tab' }, class: 'h4'
+          li = link_to 'Upvoted Ideas', '#voted-ideas', data: { toggle: 'tab', role: 'tab' }, class: 'h4'
