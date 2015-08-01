@@ -7,9 +7,8 @@ Rails.application.routes.draw do
     post '/login' => 'users/sessions#create', as: :user_session
     delete '/logout' => 'users/sessions#destroy', as: :destroy_user_session
   end
-    match 'users/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
 
-
+  match 'users/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
 
   scope ':username' do
     get '', to: 'profiles#show', as: :profile
