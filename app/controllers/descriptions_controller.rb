@@ -5,7 +5,7 @@ class DescriptionsController < ApplicationController
   layout 'ideas'
 
   def show
-    @comments = @description.comments
+    @comments = @description.comments.order('id ASC')
   end
 
   def edit

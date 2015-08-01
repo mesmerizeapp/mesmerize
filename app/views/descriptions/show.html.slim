@@ -1,5 +1,5 @@
 h3
-  | Description
+  span.fa-text Description
   - if profile_belongs_to_current_user?
     = link_to edit_idea_description_path(idea_id: @idea.id) do
       span.fa.fa-pencil-square-o.fa-sm edit
