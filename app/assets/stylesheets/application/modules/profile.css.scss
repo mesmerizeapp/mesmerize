@@ -6,7 +6,7 @@
   }
 
   .fa {
-    color: #EE8383;
+    color: $pink;
   }
 
   .idea-comments {
@@ -19,7 +19,7 @@
 
   .nav-justified {
     li {
-      background: #EE8383;
+      background: $pink;
 
       a {
         border: 0;
@@ -32,26 +32,4 @@
       }
     }
   }
-}
-
-.upvote-btn {
-  display: block;
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
-
-  &:hover {
-    background: $grey;
-  }
-}
-
-.upvote-icons {
-  padding: 40px 0;
-}
-
-.upvote-num {
-  color: $black;
-  font-size: 18px;
 }
