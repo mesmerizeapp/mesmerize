@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801160906) do
+ActiveRecord::Schema.define(version: 20150801175216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,18 @@ ActiveRecord::Schema.define(version: 20150801160906) do
   add_index "identities", ["user_id", "provider"], name: "index_identities_on_user_id_and_provider", unique: true, using: :btree
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.string   "token"
+    t.datetime "expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "invitations", ["team_id"], name: "index_invitations_on_team_id", using: :btree
+  add_index "invitations", ["user_id"], name: "index_invitations_on_user_id", using: :btree
+
   create_table "resources", force: :cascade do |t|
     t.integer  "idea_id"
     t.integer  "user_id"
@@ -90,6 +102,13 @@ ActiveRecord::Schema.define(version: 20150801160906) do
 
   add_index "resources", ["idea_id"], name: "index_resources_on_idea_id", using: :btree
   add_index "resources", ["user_id"], name: "index_resources_on_user_id", using: :btree
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -111,10 +130,13 @@ ActiveRecord::Schema.define(version: 20150801160906) do
     t.string   "image_url"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "team_id"
+    t.string   "team_role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["team_id"], name: "index_users_on_team_id", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|
@@ -129,6 +151,9 @@ ActiveRecord::Schema.define(version: 20150801160906) do
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
   add_foreign_key "identities", "users"
+  add_foreign_key "invitations", "teams"
+  add_foreign_key "invitations", "users"
+  add_foreign_key "users", "teams"
   add_foreign_key "votes", "ideas"
   add_foreign_key "votes", "users"
 end
