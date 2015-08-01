@@ -1,15 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: :show
   skip_before_action :ensure_signup_complete, only: :show
-
-  def show
-    # authorize! :read, @user
-  end
-
-  def edit
-    # authorize! :update, @user
-  end
 
   def update
     # authorize! :update, @user
@@ -48,10 +39,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def set_user
-    @user = User.find(params[:id])
-  end
 
   def user_params
     accessible = [:name, :email] # extend with your own params
