@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     resources :ideas do
       resources :comments
+      resources :resources
       resource :description do
         resources :comments
       end

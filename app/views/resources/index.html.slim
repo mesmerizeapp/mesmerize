@@ -1,0 +1,15 @@
+- content_for :banner_title, 'Resources'
+- content_for :edit do
+  .pull-right
+    = link_to new_idea_resource_path(idea_id: @idea.id), class: 'btn btn-brand-contrast' do
+      span.fa.fa-plus.fa-text
+      span Add Resource
+
+.spacer-md-15
+ol.resource-list
+  - 10.times do |num|
+    li.resource-box
+      p #{link_to 'How to make an ass of yourself', '#'} by #{link_to current_user.username, profile_path(username: current_user.username)}
+      p This is just a long ass description that is used to fill up some space and just stare into the darkness.
+    hr
+
