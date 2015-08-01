@@ -12,6 +12,8 @@ class VotesController < ApplicationController
   end
 
   def destroy
+    render json: { success: false, message: 'You can not unvote your own idea.' } and return if @idea.user == current_user
+
     vote = @idea.votes.find_by(user: current_user)
     render json: { success: false, message: 'Something went wrong. Please try again.' } and return if vote.blank?
 
