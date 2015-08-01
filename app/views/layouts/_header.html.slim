@@ -2,19 +2,26 @@ section#header
   .container
     .row
       .col-xs-2
-        .spacer-md-10
+        .spacer-md-20
         = link_to root_path do
           = image_tag 'logo.png', class: 'img-responsive'
       .col-xs-10
         .cleafix
           .pull-right
-            - if current_user.present?
-              .spacer-md-10
-              = link_to profile_path(username: current_user.username)
-                = image_tag current_user.image_url, class: 'img-circle fa-text'
-                span = current_user.name
-            - else
+            - if current_user.blank?
               .spacer-md-15
               = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-brand' do
                 span.fa.fa-twitter.fa-text
                 span Login via Twitter
+            - else
+              .spacer-md-10
+              .dropdown
+                button#profile-dropdown.btn.btn-transparent.dropdown-toggle data-toggle="dropdown" type="button"
+                  = image_tag current_user.image_url, class: 'img-circle fa-text'
+                  span.fa-text = current_user.name
+                  span.caret
+                ul.dropdown-menu aria-labelledby="profile-dropdown"
+                  li = link_to 'Profile', profile_path(username: current_user.username)
+                  li = link_to 'Idea Feed', profile_path(username: current_user.username)
+                  li = link_to 'Add Idea', new_idea_path(username: current_user.username)
+                  li = link_to 'Logout', destroy_user_session_path, method: :delete
