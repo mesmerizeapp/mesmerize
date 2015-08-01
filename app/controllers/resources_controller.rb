@@ -10,7 +10,7 @@ class ResourcesController < ApplicationController
   end
 
   def create
-    @idea.resources.create(resource_params)
+    @idea.resources.create(resource_params.merge!(user_id: current_user.id))
 
     redirect_to idea_resources_path(user_id: @idea.id)
   end

@@ -10,7 +10,7 @@ ol.resource-list
   - if @resources.present?
     - @resources.each do |resource|
       li.resource-box
-        p #{link_to resource.title, resource.slug} by #{link_to current_user.username, profile_path(username: current_user.username)}
+        p #{link_to resource.title, resource.slug} by #{link_to resource.user.username, profile_path(username: resource.user.username)}
         p = resource.description
         hr
   - else
