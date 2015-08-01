@@ -1,0 +1,37 @@
+- if ideas.present?
+  - ideas.each do |idea|
+    .row
+      .col-xs-1.col-no-gutter
+        = link_to '#', class: "btn-vote #{activate_vote(idea)}", data: { username: idea.user.username, idea_id: idea.id, action: set_action(idea) } do
+          .vote-icons.text-center
+            p.fa.fa-chevron-up.fa-2x
+            span.vote-num = idea.votes.count
+
+      .col-xs-8.col-no-gutter
+        .box.box-border-sides
+          h3
+            span.fa-text = idea.title
+            - if idea.user == current_user
+              = link_to edit_idea_path(id: idea.id)
+                span.fa.fa-pencil-square-o.fa-sm  edit
+          p = idea.brief
+          .idea-comments
+            span.fa.fa-comment-o.fa-text
+            span = link_to "#{idea.comments.count} comments", idea_path(id: idea.id)
+      .col-xs-3.col-no-gutter
+        = link_to idea_description_path(idea_id: idea.id), class: 'btn btn-idea-action btn-full-width' do
+          span.fa.fa-info-circle.fa-text
+          span Description
+        = link_to '#', class: 'btn btn-idea-action btn-full-width' do
+          span.fa.fa-gavel.fa-text
+          span Builds
+        = link_to '#', class: 'btn btn-idea-action btn-full-width' do
+          span.fa.fa-plus-square.fa-text
+          span Resources
+    - if ideas.last.id != idea.id
+      hr
+
+- else
+  .row
+    .col-xs-12
+      h3.text-center Ideas from this user is currently in the brewing process.

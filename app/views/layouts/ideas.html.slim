@@ -17,7 +17,7 @@
             - if content_for(:banner_title)
               h2.title
                 span.fa-text = yield(:banner_title)
-                - if profile_belongs_to_current_user?
+                - if @idea.user == current_user
                   = yield(:edit)
 
   .container
