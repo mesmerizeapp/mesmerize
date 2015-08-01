@@ -17,7 +17,7 @@
             - if content_for(:banner_title)
               h3.title
                 span.fa-text = yield(:banner_title)
-                - if @idea.user == current_user
+                - if @idea.user == current_user || params[:controller] == 'resources'
                   = yield(:edit)
 
   .container

@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :voted_ideas, source: :idea, through: :votes
   has_many :comments, as: :commentable
+  has_many :resources, dependent: :destroy
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
