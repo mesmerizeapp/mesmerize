@@ -1,5 +1,5 @@
 $(function () {
-	$('.btn-vote').each(function () {
+  $('.btn-vote').each(function () {
     var $voteBtn = $(this);
     var $row = $voteBtn.closest('.row');
     var height = $row.height();
