@@ -7,15 +7,15 @@ p.text-muted.fa-xxs Explain the problem statement, the solution, the market it b
 p.text-muted.fa-xxs Note: Use builds to build upon the existing concept, i.e. features and integrations.
 .spacer-md-20
 
-/ = form_for @idea, url: { action: 'update_description' }, method: :patch do |f|
-/   .form-group
-/     = f.cktext_area :description, value: @idea.description, id: 'ck-editor'
-/   .spacer-md-20
-/   .clearfix
-/     .btn-group.pull-right
-/       = button_tag type: 'submit', class: 'btn btn-brand' do
-/         span.fa-text Edit
-/         .fa.fa-chevron-right.fa-xs
+= form_for @idea.description, url: idea_description_path, method: :patch do |f|
+  .form-group
+    = f.cktext_area :content, value: @description.content, id: 'ck-editor'
+  .spacer-md-20
+  .clearfix
+    .btn-group.pull-right
+      = button_tag type: 'submit', class: 'btn btn-brand' do
+        span.fa-text Edit
+        .fa.fa-chevron-right.fa-xs
 
 javascript:
   CKEDITOR.replace('ck-editor')
