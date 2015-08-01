@@ -1,6 +1,6 @@
 module VotesHelper
   def activate_vote(idea)
-    'voted' if idea.votes.count != 0
+    'voted' if idea.votes.count != 0 && idea.user != current_user
   end
 
   def set_action(idea)
