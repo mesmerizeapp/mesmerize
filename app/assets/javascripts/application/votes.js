@@ -1,12 +1,4 @@
 $(function () {
-  $('.btn-vote').each(function () {
-    var $voteBtn = $(this);
-    var $row = $voteBtn.closest('.row');
-    var height = $row.height();
-
-    $voteBtn.css('height', height);
-  });
-
   $('.btn-vote').click(function() {
     var $this =  $(this);
     var action = $this.attr('data-action');
