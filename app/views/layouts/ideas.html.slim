@@ -15,7 +15,7 @@
         .col-xs-9.col-no-gutter
           .banner
             - if content_for(:banner_title)
-              h2.title
+              h3.title
                 span.fa-text = yield(:banner_title)
                 - if profile_belongs_to_current_user?
                   = yield(:edit)

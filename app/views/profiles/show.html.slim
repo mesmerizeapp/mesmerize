@@ -23,13 +23,16 @@ section.pane-lg.profile-ideas
                 span.fa.fa-comment-o.fa-text
                 span = link_to "#{idea.comments.count} comments", idea_path(id: idea.id)
           .col-xs-3.col-no-gutter
+            = link_to idea_path(id: idea.id), class: 'btn btn-idea-action btn-full-width' do
+              span.fa.fa-asterisk.fa-text
+              span Idea Page
             = link_to idea_description_path(idea_id: idea.id), class: 'btn btn-idea-action btn-full-width' do
               span.fa.fa-info-circle.fa-text
               span Description
             = link_to '#', class: 'btn btn-idea-action btn-full-width' do
               span.fa.fa-gavel.fa-text
               span Builds
-            = link_to '#', class: 'btn btn-idea-action btn-full-width' do
+            = link_to idea_resources_path(idea_id: idea.id), class: 'btn btn-idea-action btn-full-width' do
               span.fa.fa-plus-square.fa-text
               span Resources
         - if @ideas.last.id != idea.id

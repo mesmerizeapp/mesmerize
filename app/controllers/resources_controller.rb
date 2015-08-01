@@ -1,6 +1,6 @@
 class ResourcesController < ApplicationController
   before_action :set_idea
-  layout 'ideas'
+  layout 'ideas', except: ['new']
 
   def index
     @resources = @idea.resources
@@ -10,6 +10,9 @@ class ResourcesController < ApplicationController
   end
 
   def create
+    @idea.resources.create(resource_params)
+
+    redirect_to idea_resources_path(user_id: @idea.id)
   end
 
   def update
