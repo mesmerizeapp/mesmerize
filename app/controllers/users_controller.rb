@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: :show
+  skip_before_action :ensure_signup_complete, only: :show
 
   def show
     # authorize! :read, @user
@@ -24,18 +25,18 @@ class UsersController < ApplicationController
     end
   end
 
-  # def finish_signup
-  #   # authorize! :update, @user
-  #   if request.patch? && params[:user] #&& params[:user][:email]
-  #     if @user.update(user_params)
-  #       @user.skip_reconfirmation!
-  #       sign_in(@user, bypass: true)
-  #       redirect_to @user, notice: 'Your profile was successfully updated.'
-  #     else
-  #       @show_errors = true
-  #     end
-  #   end
-  # end
+  def finish_signup
+    # authorize! :update, @user
+    if request.patch? && params[:user] #&& params[:user][:email]
+      if current_user.update_without_password(user_params)
+        # current_user.skip_reconfirmation!
+        sign_in(current_user, bypass: true)
+        redirect_to profile_path(username: current_user.username), notice: 'Your profile was successfully updated.'
+      else
+        @show_errors = true
+      end
+    end
+  end
 
   def destroy
     # authorize! :delete, @user

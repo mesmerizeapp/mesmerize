@@ -38,4 +38,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.serve_static_files = true
+  config.action_controller.asset_host = ENV['ASSET_HOST']
+  config.action_mailer.asset_host = ENV['ASSET_HOST']
+  config.action_mailer.default_url_options = { host: ENV['REMOTE_HOST'], port: ENV['REMOTE_PORT'].to_i }
 end

@@ -1,20 +1,20 @@
 class User < ActiveRecord::Base
-  TEMP_EMAIL_PREFIX = 'change@me'
-  TEMP_EMAIL_REGEX = /\Achange@me/
+  TEMP_EMAIL_PREFIX = '@mesmerize.com'
+  TEMP_EMAIL_REGEX = /\w@mesmerize.com\b/
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_one :identity, dependent: :destroy
   has_many :ideas, dependent: :destroy
-  has_many :votes
-  has_many :voted_ideas, source: :idea, through: :votes
+  has_many :votes, dependent: :destroy
+  has_many :voted_ideas, source: :idea, through: :votes, dependent: :destroy
   has_many :comments, as: :commentable
   has_many :resources, dependent: :destroy
 
-  validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
@@ -29,10 +29,10 @@ class User < ActiveRecord::Base
           name: auth.extra.raw_info.name,
           username: auth.info.nickname || auth.uid,
           image_url: auth.info.image,
-          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+          email: email ? email : "#{auth.info.nickname}-#{auth.provider}#{TEMP_EMAIL_PREFIX}",
           password: Devise.friendly_token[0,20]
         )
-        user.skip_confirmation!
+        # user.skip_confirmation!
         user.save!
       end
     end
