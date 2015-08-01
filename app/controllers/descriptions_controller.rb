@@ -5,7 +5,7 @@ class DescriptionsController < ApplicationController
   layout 'ideas'
 
   def show
-    @description = @idea.description
+    @comments = @description.comments
   end
 
   def edit
