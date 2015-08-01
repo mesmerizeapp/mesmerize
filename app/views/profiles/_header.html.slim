@@ -6,16 +6,14 @@ section#profile-header.pane.pane-dark.pane-no-bottom
         = image_tag @user.image, class: 'img-circle img-responsive'
       .col-xs-6
         h2 = @user.name
-        p
-          | @
-          = @user.username
+        p @#{@user.username}
       .col-xs-4
 
     .spacer-md-10
     .row
       .col-xs-12
-        ul.nav.nav-tabs.nav-justified
-          li.active role="presentation"
-            = link_to 'Ideas', '#', class: 'h4'
-          li role="presentation"
-            = link_to 'Upvoted Ideas', '#', class: 'h4'
+        ul.nav.nav-tabs.nav-justified role="tablist"
+          li.active
+            = link_to 'Ideas', '#ideas', data: { toggle: 'tab', role: 'tab' }, class: 'h4'
+          li
+            = link_to 'Upvoted Ideas', '#voted-ideas', data: { toggle: 'tab', role: 'tab' }, class: 'h4'
