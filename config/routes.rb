@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   scope ':username' do
-    get '', to: 'profiles#index', as: :profile
+    get '', to: 'profiles#show', as: :profile
 
     resources :ideas do
       resources :comments
