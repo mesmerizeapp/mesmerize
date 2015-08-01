@@ -21,7 +21,7 @@ section.pane-lg.profile-ideas
               p = idea.brief
               .idea-comments
                 span.fa.fa-comment-o.fa-text
-                span 10 Comments
+                span = link_to "#{idea.comments.count} comments", idea_path(id: idea.id)
           .col-xs-3.col-no-gutter
             = link_to description_path(id: idea.id), class: 'btn btn-idea-action btn-full-width' do
               span.fa.fa-info-circle.fa-text

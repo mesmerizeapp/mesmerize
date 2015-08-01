@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   has_one :identity, dependent: :destroy
   has_many :ideas, dependent: :destroy
+  has_many :comments, as: :commentable
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
