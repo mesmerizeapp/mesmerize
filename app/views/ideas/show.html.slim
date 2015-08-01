@@ -17,7 +17,7 @@ p = @idea.brief
     p.h6 = comment.content
     hr
   .comment-form
-    = form_for Comment.new, url: { controller: 'comments', action: 'create' }, method: :post do |f|
+    = form_for @idea.comments.new, url: idea_comments_path(idea_id: @idea), method: :post do |f|
       .form-group
         = f.label :content, 'Add a comment'
         = f.text_field :content, class: 'form-control'

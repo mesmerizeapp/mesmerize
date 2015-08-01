@@ -46,12 +46,6 @@ class IdeasController < ApplicationController
   def edit_description
   end
 
-  def update_description
-    @idea.update_attribute(:description, idea_params[:description])
-
-    redirect_to description_path(username: params[:username], id: @idea.id)
-  end
-
   private
 
   def idea_params
