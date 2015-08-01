@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     get '', to: 'profiles#index', as: :profile
     scope 'ideas/:id' do
+      resources :comments
       get   'description',      to: 'ideas#description',        as: 'idea_description'
       get   'description/edit', to: 'ideas#edit_description',   as: 'edit_description'
       patch  'description',      to: 'ideas#update_description'
