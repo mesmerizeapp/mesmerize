@@ -17,6 +17,13 @@ html
     - if content_for? :content
       = yield :content
     - else
+      - if content_for(:banner_title)
+        section#masthead-home.pane.pane-dark.square-texture
+          .container
+            .row
+              .col-xs-12.col-no-gutter
+                .banner
+                  h3.title = yield(:banner_title)
       = yield
 
     = render 'layouts/footer'

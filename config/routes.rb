@@ -10,10 +10,12 @@ Rails.application.routes.draw do
 
   match 'users/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
 
+  get '/feed', to: 'ideas#index'
+
   scope ':username' do
     get '', to: 'profiles#show', as: :profile
 
-    resources :ideas do
+    resources :ideas, except: [:index] do
       resources :comments
       resources :resources
       resource :description do
