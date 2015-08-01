@@ -1,9 +1,10 @@
 h3
-  span.fa-text = @idea.title
+  | Description
   - if profile_belongs_to_current_user?
-    = link_to edit_idea_path(id: @idea.id)
-      span.fa.fa-pencil-square-o.fa-sm  edit
-p = @idea.brief
+    = link_to edit_idea_description_path(idea_id: @idea.id) do
+      span.fa.fa-pencil-square-o.fa-sm edit
+  hr
+= raw @description.content
 .spacer-md-15
 .comment-list
   = link_to '#comments' do
@@ -18,7 +19,7 @@ p = @idea.brief
       p.h6 = comment.content
       hr
   .comment-form
-    = form_for @idea.comments.new, url: idea_comments_path(idea_id: @idea), method: :post do |f|
+    = form_for @description.comments.new, url: idea_description_comments_path(idea_id: @idea), method: :post do |f|
       .form-group
         = f.label :content, 'Add a comment'
         = f.text_field :content, class: 'form-control'

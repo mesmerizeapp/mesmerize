@@ -16,16 +16,16 @@ Rails.application.routes.draw do
   end
 
   scope ':username' do
-    resources :ideas
-
     get '', to: 'profiles#index', as: :profile
-    scope 'ideas/:id' do
-      resources :comments
-      get   'description',      to: 'ideas#description',        as: 'idea_description'
-      get   'description/edit', to: 'ideas#edit_description',   as: 'edit_description'
-      patch  'description',      to: 'ideas#update_description'
 
-      resources :votes, only: [:create, :index]
+    resources :ideas do
+      resources :comments
+      resource :description do
+        resources :comments
+      end
+
+      post '/votes', to: 'votes#create', as: :vote
+      delete '/votes', to: 'votes#destroy', as: :unvote
     end
   end
 end

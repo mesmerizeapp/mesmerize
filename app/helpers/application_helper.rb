@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def activate(action)
-    action == params[:action] ? 'active' : ''
+  def activate(controller)
+    controller == params[:controller] ? 'active' : ''
   end
 end

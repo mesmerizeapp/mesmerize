@@ -1,0 +1,17 @@
+.vote-icons {
+  padding: 40px 0;
+}
+
+.vote-num {
+  color: #ee8383;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.voted {
+  background-color: $brand;
+
+  .fa, .vote-num {
+    color: $white;
+  }
+}
