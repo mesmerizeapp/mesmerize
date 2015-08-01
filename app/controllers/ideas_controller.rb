@@ -3,10 +3,6 @@ class IdeasController < ApplicationController
   before_action :set_idea, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:index, :show, :description]
 
-  def index
-    redirect_to profile_path(params[:username])
-  end
-
   def show
     @comments = @idea.comments.order('id ASC')
   end
@@ -16,9 +12,7 @@ class IdeasController < ApplicationController
   end
 
   def create
-    idea = current_user.ideas.build(idea_params)
-
-    if idea.save
+    if current_user.ideas.create(idea_params)
       redirect_to profile_path(params[:username])
     else
       redirect_to new_idea_path, alert: 'Something went wrong. Please try again.'
@@ -38,6 +32,7 @@ class IdeasController < ApplicationController
 
   def destroy
     @idea.destroy
+    redirect_to profile_path(params[:username])
   end
 
   def description

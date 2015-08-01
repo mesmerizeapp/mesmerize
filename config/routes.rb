@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       resource :description do
         resources :comments
       end
+
+      post '/votes', to: 'votes#create', as: :vote
+      delete '/votes', to: 'votes#destroy', as: :unvote
     end
   end
 end
