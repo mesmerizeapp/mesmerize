@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801175216) do
+ActiveRecord::Schema.define(version: 20150802150534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,9 +60,11 @@ ActiveRecord::Schema.define(version: 20150801175216) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "team_id"
   end
 
   add_index "ideas", ["brief"], name: "index_ideas_on_brief", using: :btree
+  add_index "ideas", ["team_id"], name: "index_ideas_on_team_id", using: :btree
   add_index "ideas", ["title"], name: "index_ideas_on_title", using: :btree
   add_index "ideas", ["user_id"], name: "index_ideas_on_user_id", using: :btree
 
@@ -81,14 +83,28 @@ ActiveRecord::Schema.define(version: 20150801175216) do
   create_table "invitations", force: :cascade do |t|
     t.integer  "team_id"
     t.integer  "user_id"
+    t.string   "email"
     t.string   "token"
     t.datetime "expires_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "accepted_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "invitations", ["team_id"], name: "index_invitations_on_team_id", using: :btree
   add_index "invitations", ["user_id"], name: "index_invitations_on_user_id", using: :btree
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.integer  "team_role",  default: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "memberships", ["team_id"], name: "index_memberships_on_team_id", using: :btree
+  add_index "memberships", ["user_id", "team_id"], name: "index_memberships_on_user_id_and_team_id", unique: true, using: :btree
+  add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
 
   create_table "resources", force: :cascade do |t|
     t.integer  "idea_id"
@@ -110,6 +126,8 @@ ActiveRecord::Schema.define(version: 20150801175216) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "teams", ["name"], name: "index_teams_on_name", unique: true, using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -130,13 +148,11 @@ ActiveRecord::Schema.define(version: 20150801175216) do
     t.string   "image_url"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "team_id"
-    t.string   "team_role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["team_id"], name: "index_users_on_team_id", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|
     t.integer  "user_id"
@@ -149,10 +165,12 @@ ActiveRecord::Schema.define(version: 20150801175216) do
   add_index "votes", ["user_id", "idea_id"], name: "unique_votes_index", unique: true, using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
+  add_foreign_key "ideas", "teams"
   add_foreign_key "identities", "users"
   add_foreign_key "invitations", "teams"
   add_foreign_key "invitations", "users"
-  add_foreign_key "users", "teams"
+  add_foreign_key "memberships", "teams"
+  add_foreign_key "memberships", "users"
   add_foreign_key "votes", "ideas"
   add_foreign_key "votes", "users"
 end

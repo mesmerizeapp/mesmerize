@@ -1,10 +1,10 @@
 class IdeasController < ApplicationController
   layout 'application', only: [:new, :index]
   before_action :set_idea, except: [:index, :new, :create]
-  before_action :authenticate_user!, except: [:index, :show, :description]
+  skip_before_action :authenticate_user!, only: [:index, :show, :description]
 
   def index
-    @ideas = Idea.all
+    @ideas = (current_user.ideas.to_a + current_user.teams.map(&:ideas)).flatten.uniq
   end
 
   def show
@@ -13,6 +13,7 @@ class IdeasController < ApplicationController
 
   def new
     @idea = current_user.ideas.new
+    @teams = current_user.teams.collect {|team| [team.name, team.id]}
   end
 
   def create
@@ -48,7 +49,7 @@ class IdeasController < ApplicationController
   private
 
   def idea_params
-    params.require(:idea).permit(:title, :brief, :description)
+    params.require(:idea).permit(:title, :brief, :description, :team_id)
   end
 
   def set_idea
