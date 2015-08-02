@@ -4,7 +4,7 @@ class IdeasController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :description]
 
   def index
-    @ideas = Idea.all
+    @ideas = (current_user.ideas.to_a + current_user.teams.map(&:ideas)).flatten.uniq
   end
 
   def show
