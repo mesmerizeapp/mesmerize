@@ -1,6 +1,6 @@
-.row
-  - if ideas.present?
-    - ideas.each do |idea|
+- if ideas.present?
+  - ideas.each do |idea|
+    .row
       .col-xs-1.col-no-gutter
         = link_to '#', class: "btn-vote #{activate_vote(idea)}", data: { username: idea.user.username, idea_id: idea.id, action: set_action(idea) } do
           .vote-icons.text-center
@@ -12,27 +12,28 @@
           h3
             span.fa-text = idea.title
             - if idea.user == current_user
-              = link_to edit_idea_path(id: idea.id)
+              = link_to edit_idea_path(username: idea.user.username, id: idea.id)
                 span.fa.fa-pencil-square-o.fa-sm  edit
           p = idea.brief
           .comment-list
             span.fa.fa-comment-o.fa-text
-            span = link_to "#{idea.comments.count} comments", idea_path(id: idea.id)
+            span = link_to "#{idea.comments.count} comments", idea_path(username: idea.user.username, id: idea.id)
       .col-xs-3.col-no-gutter
-        = link_to idea_path(id: idea.id), class: 'btn btn-idea-action btn-full-width' do
+        = link_to idea_path(username: idea.user.username, id: idea.id), class: 'btn btn-idea-action btn-full-width' do
           span.fa.fa-asterisk.fa-text
           span Idea Page
-        = link_to idea_description_path(idea_id: idea.id), class: 'btn btn-idea-action btn-full-width' do
+        = link_to idea_description_path(username: idea.user.username, idea_id: idea.id), class: 'btn btn-idea-action btn-full-width' do
           span.fa.fa-info-circle.fa-text
           span Description
         = link_to '#', class: 'btn btn-idea-action btn-full-width' do
           span.fa.fa-gavel.fa-text
           span Builds
-        = link_to idea_resources_path(idea_id: idea.id), class: 'btn btn-idea-action btn-full-width' do
+        = link_to idea_resources_path(username: idea.user.username, idea_id: idea.id), class: 'btn btn-idea-action btn-full-width' do
           span.fa.fa-plus-square.fa-text
           span Resources
-      hr
+    hr
 
-  - else
+- else
+  .row
     .col-xs-12
       h3.text-center = message
