@@ -45,6 +45,10 @@
   &:hover {
     background: $brand;
     color: $white;
+
+    .fa {
+      color: $white;
+    }
   }
 }
 
@@ -55,6 +59,7 @@
 
 .btn-vote {
   display: block;
+  color: $black;
 
   &:hover,
   &:focus {
@@ -62,6 +67,5 @@
   }
 
   &:hover {
-    background: $brand;
   }
 }
