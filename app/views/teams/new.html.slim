@@ -10,7 +10,7 @@
 
         .spacer-md-40
 
-        = form_for Team.new, url: teams_path, method: :post do |f|
+        = form_for current_user.teams.new, url: teams_path, method: :post do |f|
           .form-group
             = f.label :name, 'Give your team of ideators a name'
             = f.text_field :name, autofocus: true, class: 'form-control', required: true

@@ -1,0 +1,10 @@
+= render partial: 'header'
+
+section.pane-lg.profile-ideas
+  .container
+    .tab-content
+      #ideas.tab-pane.active
+        = render partial: 'shared/ideas', locals: { ideas: @ideas, message: 'Ideas from this team is currently in the brewing process.' }
+
+      #users.tab-pane
+        = render partial: 'users', locals: { users: @users, message: 'Nothing to see here...'}
