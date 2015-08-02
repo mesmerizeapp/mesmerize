@@ -1,0 +1,17 @@
+.spacer-md-10
+section#profile-header.pane.pane-dark.pane-no-bottom
+  .container
+    .row
+      .col-xs-2
+        = image_tag 'company_placeholder.png', class: 'img-circle img-responsive'
+      .col-xs-6
+        h2 = @team.name
+        p #{@team.users.count} member#{'s' if @team.users.count > 1} in the team
+      .col-xs-4
+
+    .spacer-md-10
+    .row
+      .col-xs-12
+        ul.nav.nav-tabs.nav-justified role="tablist"
+          li.active = link_to 'Ideas', '#ideas', data: { toggle: 'tab', role: 'tab' }, class: 'h4'
+          li = link_to 'Users', '#users', data: { toggle: 'tab', role: 'tab' }, class: 'h4'
