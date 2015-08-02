@@ -19,7 +19,7 @@ $(function () {
     var action = $this.attr('data-action');
 
     $.ajax({
-      url: $this.data('username') + '/ideas/' + $this.data('idea-id') + '/votes',
+      url: '/' + $this.data('username') + '/ideas/' + $this.data('idea-id') + '/votes',
       type: action,
       success: function(data, textStatus, jqXHR) {
         if (data.success) {
