@@ -8,11 +8,13 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_one :identity, dependent: :destroy
+  has_many :teams, through: :memberships
   has_many :ideas, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :voted_ideas, source: :idea, through: :votes, dependent: :destroy
   has_many :comments, as: :commentable
   has_many :resources, dependent: :destroy
+  has_many :invitations, dependent: :destroy
 
   validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
 
