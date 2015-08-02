@@ -8,15 +8,15 @@
 
 .container
   .box.drop-box-shadow
-    .row
-      .col-md-4
-        h4 Team Name
-      .col-md-6
-        h4 Description
-      .col-md-2
-        h4.text-center Team Page
-    hr
     - if @teams.present?
+      .row
+        .col-md-4
+          h4 Team Name
+        .col-md-6
+          h4 Description
+        .col-md-2
+          h4.text-center Team Page
+      hr
       - @teams.each do |team|
         .row
           .col-md-4
@@ -27,3 +27,7 @@
             .text-center
               = link_to 'view', team_path(team_name: team.name)
         hr
+    - else
+      .text-center
+        h2 You're not a part of any team.
+        h3 Why don't you create one?
