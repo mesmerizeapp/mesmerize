@@ -8,6 +8,11 @@ section#profile-header.pane.pane-dark.pane-no-bottom
         h2 = @team.name
         p #{@team.users.count} member#{'s' if @team.users.count > 1} in the team
       .col-xs-4
+        .spacer-md-20
+        .text-right
+          = link_to new_team_path, class: 'btn btn-brand-contrast' do
+            span.fa.fa-plus.fa-text
+            span Add User
 
     .spacer-md-10
     .row

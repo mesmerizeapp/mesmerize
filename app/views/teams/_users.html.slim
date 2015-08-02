@@ -1,8 +1,4 @@
 - if users.present?
-  = link_to new_team_path, class: 'btn btn-brand' do
-    span.fa.fa-plus.fa-text
-    span Add User
-  hr
   - users.each do |user|
     .row
       .col-xs-2
