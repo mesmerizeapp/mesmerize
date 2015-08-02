@@ -1,12 +1,16 @@
 .profile-ideas {
   background: #fff;
 
-  p {
-    display: block;
+  a, .fa {
+    color: $brand;
   }
 
-  .fa {
-    color: $pink;
+  a {
+    font-weight: 600;
+  }
+
+  p {
+    display: block;
   }
 
   .idea-comments {
