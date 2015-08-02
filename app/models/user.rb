@@ -19,10 +19,6 @@ class User < ActiveRecord::Base
 
   validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
 
-  def is_admin_of?(team)
-    self.team.admins.include?(current_user)
-  end
-
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
 
