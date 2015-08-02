@@ -1,0 +1,25 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      .spacer-md-50
+      .spacer-md-50
+      .box.drop-box-shadow
+        h4
+          span.fa.fa-group.fa-brand.fa-text
+          | Create Your Team of Ideators
+
+        .spacer-md-40
+
+        = form_for Team.new, url: teams_path, method: :post do |f|
+          .form-group
+            = f.label :name, 'Give your team of ideators a name'
+            = f.text_field :name, autofocus: true, class: 'form-control', required: true
+          .form-group
+            = f.label :description, 'A brief that describes your team?'
+            = f.text_field :description, class: 'form-control'
+          .spacer-md-20
+          .clearfix
+            .btn-group.pull-right
+              = button_tag type: 'submit', class: 'btn btn-brand' do
+                .fa.fa-plus.fa-xs.fa-text
+                span Create
