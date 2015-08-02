@@ -6,11 +6,11 @@ section#profile-header.pane.pane-dark.pane-no-bottom
         = image_tag 'company_placeholder.png', class: 'img-circle img-responsive'
       .col-xs-6
         h2 = @team.name
-        p #{@team.users.count} member#{'s' if @team.users.count > 1} in the team
+        p #{@team.users.count} #{'member'.pluralize(@team.users.count)} in the team
       .col-xs-4
         .spacer-md-20
         .text-right
-          = link_to new_team_path, class: 'btn btn-brand-contrast' do
+          = link_to new_team_membership_path(team_name: @team.name), class: 'btn btn-brand-contrast' do
             span.fa.fa-plus.fa-text
             span Add User
 

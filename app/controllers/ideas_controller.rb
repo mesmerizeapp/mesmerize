@@ -13,6 +13,7 @@ class IdeasController < ApplicationController
 
   def new
     @idea = current_user.ideas.new
+    @teams = current_user.teams.collect {|team| [team.name, team.id]}
   end
 
   def create
@@ -48,7 +49,7 @@ class IdeasController < ApplicationController
   private
 
   def idea_params
-    params.require(:idea).permit(:title, :brief, :description)
+    params.require(:idea).permit(:title, :brief, :description, :team_id)
   end
 
   def set_idea

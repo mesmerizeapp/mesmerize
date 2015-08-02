@@ -4,8 +4,9 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find_by(name: params[:team_name])
+    @team = Team.find_by(name: params[:name])
     @users = @team.users
+    @ideas = @team.ideas
   end
 
   def new
@@ -13,7 +14,7 @@ class TeamsController < ApplicationController
 
   def create
     if current_user.teams.create(team_params)
-      redirect_to team_path(team_name: team_params[:name]), alert: 'Success'
+      redirect_to team_path(name: team_params[:name]), alert: 'Success'
     else
       redirect_to teams_path
     end

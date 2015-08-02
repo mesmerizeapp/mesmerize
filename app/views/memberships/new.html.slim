@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      .spacer-md-50
+      .spacer-md-50
+      .box.drop-box-shadow
+        h4
+          span.fa.fa-plus-square.fa-brand.fa-text
+          | Add Member to Team
+
+        .spacer-md-40
+
+        = form_for '', url: team_memberships_path(team_name: params[:team_name]), method: :post do |f|
+          .form-group
+            = f.label :email_or_username, 'Enter Email or Username'
+            = f.text_field :email_or_username, autofocus: true, class: 'form-control', required: true
+          .spacer-md-20
+          .clearfix
+            .btn-group.pull-right
+              = f.submit 'Continue', class: 'btn btn-brand' do
+                .fa.fa-plus.fa-xs.fa-text
+                span Add
