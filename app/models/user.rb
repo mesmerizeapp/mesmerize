@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_one :identity, dependent: :destroy
+  has_many :memberships, dependent: :destroy
   has_many :teams, through: :memberships
   has_many :ideas, dependent: :destroy
   has_many :votes, dependent: :destroy
