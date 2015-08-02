@@ -34,7 +34,7 @@ class MembershipsController < ApplicationController
 
   def set_user
     if params[:email_or_username].present?
-      @user = User.find_by(email: params[:email_or_username]) || User.find_by(username: params[:username])
+      @user = User.find_by(email: params[:email_or_username]) || User.find_by(username: params[:email_or_username])
     elsif params[:user_id].present?
       @user = User.find_by(id: params[:user_id])
     else
