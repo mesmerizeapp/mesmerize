@@ -5,11 +5,16 @@ class Team < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true, format: { with: /\A[a-z0-9_-]+\z/ }
 
-  def admins
+  def admin_users
     self.memberships.admin.map(&:user)
   end
 
   def remove_member(user)
     self.memberships.find_by(user: user).destroy
+  end
+
+
+  def has_admin?(user)
+    self.admin_users.include?(user)
   end
 end
