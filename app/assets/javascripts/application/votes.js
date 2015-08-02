@@ -1,4 +1,19 @@
 $(function () {
+  $('.btn-vote').each(function() {
+    $btn = $(this);
+    $parentRow = $btn.closest('.row');
+    btnHeight = $btn.height();
+    parentRowHeight = $parentRow.height();
+    marginValue = (parentRowHeight - btnHeight)/2;
+
+    $btn.css('padding', marginValue + 'px 0');
+  });
+
+  $('.col-no-gutter .box').each(function() {
+    $parenetRow = $(this).closest('.row');
+    $(this).css('height', $parenetRow.height() + 'px');
+  });
+
   $('.btn-vote').click(function() {
     var $this =  $(this);
     var action = $this.attr('data-action');
