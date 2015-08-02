@@ -1,7 +1,7 @@
 class IdeasController < ApplicationController
   layout 'application', only: [:new, :index]
   before_action :set_idea, except: [:index, :new, :create]
-  before_action :authenticate_user!, except: [:index, :show, :description]
+  skip_before_action :authenticate_user!, only: [:index, :show, :description]
 
   def index
     @ideas = Idea.all
