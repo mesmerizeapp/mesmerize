@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_one :identity, dependent: :destroy
   has_many :memberships, dependent: :destroy
   has_many :teams, through: :memberships
-  has_many :ideas, dependent: :destroy
+  has_many :ideas
   has_many :votes, dependent: :destroy
   has_many :voted_ideas, source: :idea, through: :votes, dependent: :destroy
   has_many :comments, as: :commentable
@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
   has_many :invitations, dependent: :destroy
 
   validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
+
+  def is_admin_of?(team)
+    self.team.admins.include?(current_user)
+  end
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
