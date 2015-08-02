@@ -1,6 +1,6 @@
-.row
-  - if ideas.present?
-    - ideas.each do |idea|
+- if ideas.present?
+  - ideas.each do |idea|
+    .row
       .col-xs-1.col-no-gutter
         = link_to '#', class: "btn-vote #{activate_vote(idea)}", data: { username: idea.user.username, idea_id: idea.id, action: set_action(idea) } do
           .vote-icons.text-center
@@ -31,8 +31,9 @@
         = link_to idea_resources_path(username: idea.user.username, idea_id: idea.id), class: 'btn btn-idea-action btn-full-width' do
           span.fa.fa-plus-square.fa-text
           span Resources
-      hr
+    hr
 
-  - else
+- else
+  .row
     .col-xs-12
       h3.text-center = message
