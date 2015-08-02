@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   get '/feed', to: 'ideas#index'
 
-  resources :teams, param: :team_name
+  resources :teams, param: :name do
+    resources :memberships, except: [:show, :index]
+  end
 
   scope ':username' do
     get '', to: 'profiles#show', as: :profile
