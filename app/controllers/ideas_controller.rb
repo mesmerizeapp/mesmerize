@@ -1,7 +1,11 @@
 class IdeasController < ApplicationController
-  layout 'application', only: [:new]
+  layout 'application', only: [:new, :index]
   before_action :set_idea, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:index, :show, :description]
+
+  def index
+    @ideas = Idea.all
+  end
 
   def show
     @comments = @idea.comments.order('id ASC')
