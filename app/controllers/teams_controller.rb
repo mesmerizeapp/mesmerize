@@ -13,9 +13,9 @@ class TeamsController < ApplicationController
 
   def create
     if current_user.teams.create(team_params)
-      redirect_to teams_path, alert: 'Success'
+      redirect_to team_path(team_name: team_params[:name]), alert: 'Success'
     else
-      redirect_to root_path
+      redirect_to teams_path
     end
   end
 
