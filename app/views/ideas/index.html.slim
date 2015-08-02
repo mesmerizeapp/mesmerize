@@ -1,0 +1,3 @@
+- content_for :banner_title, 'Idea Feed'
+section.pane-lg.profile-ideas
+  .container = render partial: 'shared/ideas', locals: { ideas: @ideas, message: 'Jon Snow is dead.' }
