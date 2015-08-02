@@ -11,8 +11,7 @@ class TeamsController < ApplicationController
   end
 
   def create
-    team = current_user.teams.create(team_params)
-    if team && current_user.memberships(team: team)
+    if current_user.teams.create(team_params)
       redirect_to root_path
     else
       redirect_to root_path
