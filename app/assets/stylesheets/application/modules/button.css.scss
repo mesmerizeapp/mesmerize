@@ -30,6 +30,10 @@
   &:hover {
     background: $white;
     color: $brand;
+
+    .fa {
+      color: $brand;
+    }
   }
 }
 
