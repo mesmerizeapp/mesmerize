@@ -1,0 +1,15 @@
+- if users.present?
+  - users.each do |user|
+    .row
+      .col-xs-2
+        = image_tag user.image, class: 'img-circle img-responsive'
+      .col-xs-4
+        h3 #{user.name}
+        p = link_to "@#{user.username}", profile_path(username: user.username)
+        p = user.email
+    hr
+
+- else
+  .row
+    .col-xs-12
+      h3.text-center = message

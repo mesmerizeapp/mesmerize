@@ -2,15 +2,16 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   root 'pages#home'
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }, skip: [:sessions, :registrations]
+  match 'users/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
 
   as :user do
     post '/login' => 'users/sessions#create', as: :user_session
     delete '/logout' => 'users/sessions#destroy', as: :destroy_user_session
   end
 
-  match 'users/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
-
   get '/feed', to: 'ideas#index'
+
+  resources :teams, param: :team_name
 
   scope ':username' do
     get '', to: 'profiles#show', as: :profile
