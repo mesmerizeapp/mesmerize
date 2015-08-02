@@ -1,29 +1,45 @@
 class MembershipsController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :set_user
+
   def create
-    if Membership.create(team_id: params[:team_id], user_id: params[:team_id])
-      redirect_to root_path
+    if Membership.create(team_id: @team, user: @user)
+      redirect_to team_path(team_name: @team.name)
     else
-      redirect_to root_path
+      redirect_to team_path(team_name: @team.name)
     end
   end
 
   def destroy
-    team = Team.find(params[:team_id])
-
-    if current_user.is_admin_of?(team)
-      team.membership.remove_member(User.find(params[:user_id])) ? redirect_to root_path : redirect_to root_path
+    if @team.remove_member(@user)
+      redirect_to team_path(team_name: @team.name)
     else
-      redirect_to root_path
+      redirect_to team_path(team_name: @team.name)
     end
   end
 
   def update
-    team = Team.find(params[:team_id])
-
-    if current_user.is_admin_of?(team)
-      team.membership.find_by(user_id: params[:user_id]).update_attribute(team_role: params[:team_role]) ? redirect_to root_path : redirect_to root_path
+    if @team.memberships.find_by(user: @user).update_attribute(team_role: params[:team_role])
+      redirect_to team_path(team_name: @team.name)
     else
-      redirect_to root_path
+      redirect_to team_path(team_name: @team.name)
     end
+  end
+
+  private
+
+  def set_user
+    if params[:email].present?
+      @user = User.find_by(email: params[:email])
+    elsif params[:user_id].present?
+      @user = User.find_by(id: params[:user_id])
+    else
+      redirect_to team_path(team_name: @team.name)
+    end
+  end
+
+  def authenticate_admin!
+    @team = Team.find(params[:team_id])
+    redirect_to team_path(team_name: @team.name) if !@team.has_admin?(current_user)
   end
 end
