@@ -14,8 +14,8 @@
             - if idea.user == current_user
               = link_to edit_idea_path(id: idea.id)
                 span.fa.fa-pencil-square-o.fa-sm  edit
-          p.word-wrap = idea.brief
-          .idea-comments
+          p = idea.brief
+          .comment-list
             span.fa.fa-comment-o.fa-text
             span = link_to "#{idea.comments.count} comments", idea_path(id: idea.id)
       .col-xs-3.col-no-gutter
