@@ -8,6 +8,10 @@ body {
   -moz-osx-font-smoothing: antialiased;
 }
 
+a {
+  color: $brand;
+}
+
 .container {
   width: 960px;
 }
