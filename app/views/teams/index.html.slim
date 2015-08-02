@@ -1,0 +1,14 @@
+- content_for :banner_title, 'Teams'
+
+- content_for :edit do
+  .spacer-md-5
+  = link_to new_team_path, class: 'btn btn-brand-contrast' do
+    span.fa.fa-plus.fa-sm.fa-white.fa-text
+    | Create Team
+
+.container
+  .row
+    .col-md-12
+      .box.drop-box-shadow
+
+        hr
