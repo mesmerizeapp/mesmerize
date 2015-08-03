@@ -11,9 +11,10 @@
         .spacer-md-40
 
         = form_for @idea, url: { action: 'create' }, html: { multipart: true } do |f|
-          .form-group
-            = f.label :team_id, 'Where do you want?'
-            = f.select :team_id, @teams, {include_blank: :select}, class: 'form-control'
+          - if current_user.teams.present?
+            .form-group
+              = f.label :team_id, 'Where do you want to add this idea? (Leave blank for Profile Idea)'
+              = f.select :team_id, @teams, {include_blank: :select}, class: 'form-control'
           .form-group
             = f.label :title, 'What do you want to call this idea?'
             = f.text_field :title, autofocus: true, class: 'form-control'
