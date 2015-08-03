@@ -6,3 +6,17 @@
   float: left;
   margin-right: 10px;
 }
+
+.img-hand,
+.img-bulb {
+  position: absolute;
+}
+
+.img-hand {
+  right: 100px;
+}
+
+.img-bulb {
+  bottom: 0;
+  right: 50px;
+}

@@ -7,26 +7,31 @@ html
     meta content="width=device-width, initial-scale=1.0" name="viewport"
 
     = yield :stylesheets
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Raleway:400,200,300,500,600,800', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Damion', media: 'all', 'data-turbolinks-track' => true
     = yield :meta
     = csrf_meta_tags
     /= favicon_link_tag 'favicon.ico'
 
   body
-    = render 'layouts/header'
+    - if content_for?(:custom_header)
+      = yield :custom_header
+    - else
+      = render 'layouts/header'
 
     - if content_for? :content
       = yield :content
     - else
       - if content_for?(:banner_title)
+        .spacer-md-10
         section#masthead-home.pane.pane-dark.square-texture
           .container
             .row
-              .col-xs-12.col-no-gutter
-                .banner
-                  .clearfix
-                    h3.title.pull-left = yield(:banner_title)
-                    .pull-right
-                      = yield(:edit) if content_for?(:edit)
+              .col-xs-12
+                .clearfix
+                  h3.title.pull-left = yield(:banner_title)
+                  .pull-right
+                    = yield(:edit) if content_for?(:edit)
       = yield
 
     = render 'layouts/footer'

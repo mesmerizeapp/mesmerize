@@ -1,10 +1,25 @@
-.spacer-md-10
-section#masthead-home.pane.pane-dark.square-texture
-  .spacer-md-50
-  .text-center
-    h1 Don't let your ideas slip away again!
-    p.h3.sub-text Mesmerize helps you log, polish & get them validated!
-  .spacer-md-50
+- content_for :custom_header do
+  section.hidden
+
+
+section#masthead-home.pane.pane-dark.square-texture.pane-no-padding
+  .container
+    .row
+      .col-md-12
+        = image_tag 'hand.png', class: 'img-hand'
+        = image_tag 'bulb.png', class: 'img-bulb'
+        h3.home-logo Mesmerize
+        .spacer-md-30
+        .text-center
+          h1.home-title Don't let your ideas
+          h1.home-title slip away again!
+          p.h3.sub-text Mesmerize helps you log, polish & get them validated!
+          .spacer-md-30
+          = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-brand-contrast btn-home' do
+            span.fa.fa-twitter.fa-text
+            span Login via Twitter
+          .spacer-md-50
+
 
 section#pitch.pane
   .container

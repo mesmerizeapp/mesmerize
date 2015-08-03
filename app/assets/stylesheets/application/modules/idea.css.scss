@@ -1,18 +1,15 @@
-.idea-single {
-  a {
-    color: $brand;
-    font-weight: 600;
-  }
-
-  .active {
-    background: $brand;
-    color: $white;
-  }
-}
-
+.idea-single,
 .comment-list {
   a {
     color: $brand;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+
+.idea-single {
+  .active {
+    background: $brand;
+    color: $white;
   }
 }

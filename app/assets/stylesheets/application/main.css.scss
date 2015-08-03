@@ -1,7 +1,7 @@
 body {
   background-color: $white;
   background-image: image-url("bg.png");
-  font-family: 'Oxygen', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 16px;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
@@ -10,6 +10,29 @@ body {
 
 a {
   color: $brand;
+}
+
+.logo {
+  color: $brand;
+  font-family: 'Damion', cursive;
+  font-size: 30px;
+
+  &:hover {
+    color: $brand;
+    text-decoration: none;
+  }
+}
+
+.home-logo {
+  color: $white;
+  font-family: 'Damion', cursive;
+  font-size: 38px;
+}
+
+.home-title {
+  font-size: 50px;
+  font-weight: 300;
+  margin: 0;
 }
 
 .container {
@@ -26,6 +49,10 @@ a {
 
 .pane-no-bottom {
   padding-bottom: 0 !important;
+}
+
+.pane-no-padding {
+  padding: 0 !important;
 }
 
 .pane-dark {
