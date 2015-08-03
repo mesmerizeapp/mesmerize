@@ -8,4 +8,8 @@ class Idea < ActiveRecord::Base
   has_one :description, dependent: :destroy
 
   after_create :create_description
+
+  def is_deletable_by?(user)
+    self.team.blank? && self.user == user || self.team.has_admin?(user)
+  end
 end

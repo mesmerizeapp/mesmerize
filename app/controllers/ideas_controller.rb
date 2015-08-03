@@ -36,7 +36,7 @@ class IdeasController < ApplicationController
   end
 
   def destroy
-    @idea.destroy
+    @idea.destroy if @idea.is_deletable_by?(current_user)
     redirect_to profile_path(params[:username])
   end
 

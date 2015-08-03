@@ -1,8 +1,8 @@
 - content_for :banner_title, 'Edit Idea'
 - content_for :edit do
-  .pull-right = link_to idea_path(username: current_user.username, id: @idea.id), method: :delete, class: 'btn btn-profile fa-text' do
-    span.fa.fa-trash.fa-sm.fa-white Delete
-
+  .pull-right = link_to idea_path(username: current_user.username, id: @idea.id), method: :delete, class: 'btn btn-brand-contrast' do
+    span.fa.fa-trash.fa-sm.fa-white.fa-text
+    span Delete
 h4
   span.fa.fa-pencil-square-o.fa.fa-text.fa-lg.fa-brand
   | Refine until you're satisfied.
