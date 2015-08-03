@@ -5,6 +5,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find_by(name: params[:name])
+    @admins = @team.admin_users
     @users = @team.users
     @ideas = @team.ideas
   end

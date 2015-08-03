@@ -37,6 +37,8 @@ class MembershipsController < ApplicationController
       @user = User.find_by(email: params[:email_or_username]) || User.find_by(username: params[:email_or_username])
     elsif params[:user_id].present?
       @user = User.find_by(id: params[:user_id])
+    elsif params[:username].present?
+      @user = User.find_by(username: params[:username])
     else
       redirect_to team_path(name: @team.name)
     end
