@@ -30,6 +30,9 @@ gem 'devise'
 gem 'omniauth-twitter'
 gem 'cancancan'
 
+# Payment
+gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
+
 # Misc
 gem 'exception_notification'
 gem 'httparty'
